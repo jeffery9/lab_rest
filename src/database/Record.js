@@ -10,9 +10,12 @@ const DB = require("./db.json");
  *         id: 
  *           type: string
  *           example: ad75d475-ac57-44f4-a02a-8f6def58ff56
- *         workout: 
+ *         workoutId:
  *           type: string
  *           example: 4a3d9aaa-608c-49a7-a004-66305ad4ab50 
+ *         workout: 
+ *           type: string
+ *           $ref: "#/components/schemas/Workout"
  *         record:
  *           type: string
  *           example: 160 reps
@@ -38,4 +41,18 @@ const getRecordForWorkout = (workoutId) => {
     throw { status: error?.status || 500, message: error?.message || error };
   }
 };
-module.exports = { getRecordForWorkout };
+
+const createNewRecord = (newRecord) => {
+  try {
+    DB.records.push(newRecord);
+    saveToDatabase(DB);
+    return newRecord;
+  } catch (error) {
+    throw { status: 500, message: error?.message || error };
+  }
+};
+
+module.exports = {
+  getRecordForWorkout,
+  createNewRecord
+};

@@ -107,56 +107,6 @@ router.get("/:workoutId", workoutController.getOneWorkout);
 
 /**
  * @openapi
- * /api/v1/workouts/{workoutId}/records:
- *   get:
- *     tags:
- *       - Workouts
- *     parameters:
- *       - in: path
- *         name: workoutId
- *         required: true
- *         type: string
- *         minimum: 1
- *         description: Parameter description in Markdown.
- *     responses:
- *       200:
- *         description: OK
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 status:
- *                   type: string
- *                   example: OK
- *                 data:
- *                   type: array 
- *                   items: 
- *                     $ref: "#/components/schemas/Record"
- *       5XX:
- *         description: FAILED
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 status: 
- *                   type: string
- *                   example: FAILED
- *                 data:
- *                   type: object
- *                   properties:
- *                     error:
- *                       type: string 
- *                       example: "Some error message"
- */
-router.get("/:workoutId/records", recordController.getRecordForWorkout);
-
-// todo add Security
-// router.post("/", authenticate, authorize, workoutController.createNewWorkout);
-
-/**
- * @openapi
  * /api/v1/workouts:
  *   post:
  *     tags:
@@ -292,5 +242,191 @@ router.patch("/:workoutId", workoutController.updateOneWorkout);
  *                       example: "Some error message"
  */
 router.delete("/:workoutId", workoutController.deleteOneWorkout);
+
+/**
+ * @openapi
+ * /api/v1/workouts/{workoutId}/records:
+ *   get:
+ *     tags:
+ *       - Workouts
+ *     parameters:
+ *       - in: path
+ *         name: workoutId
+ *         required: true
+ *         type: string
+ *         minimum: 1
+ *         description: Parameter description in Markdown.
+ *     responses:
+ *       200:
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: OK
+ *                 data:
+ *                   type: array 
+ *                   items: 
+ *                     $ref: "#/components/schemas/Record"
+ *       5XX:
+ *         description: FAILED
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status: 
+ *                   type: string
+ *                   example: FAILED
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     error:
+ *                       type: string 
+ *                       example: "Some error message"
+ */
+router.get("/:workoutId/records", recordController.getRecordForWorkout);
+
+
+/**
+ * @openapi
+ * /api/v1/workouts/records:
+ *   get:
+ *     tags:
+ *       - Workouts
+ *     parameters:
+ *       - in: query
+ *         name: mode
+ *         
+ *           
+ *     responses:
+ *       200:
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: OK
+ *                 data:
+ *                   type: array 
+ *                   items: 
+ *                     $ref: "#/components/schemas/Record"
+ *       5XX:
+ *         description: FAILED
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status: 
+ *                   type: string
+ *                   example: FAILED
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     error:
+ *                       type: string 
+ *                       example: "Some error message"
+ */
+router.get("/records", recordController.createNewRecord);
+
+/**
+ * @openapi
+ * /api/v1/workouts/records/{recordID}:
+ *   get:
+ *     tags:
+ *       - Workouts
+ *    
+ *           
+ *     responses:
+ *       200:
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: OK
+ *                 data:
+ *                   type: array 
+ *                   items: 
+ *                     $ref: "#/components/schemas/Record"
+ *       5XX:
+ *         description: FAILED
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status: 
+ *                   type: string
+ *                   example: FAILED
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     error:
+ *                       type: string 
+ *                       example: "Some error message"
+ */
+router.get("/records/:recordId", recordController.createNewRecord);
+
+/**
+ * @openapi
+ * /api/v1/workouts/records:
+ *   post:
+ *     tags:
+ *       - Workouts
+ *     parameters:
+ *       - in: body
+ *         name: record
+ *         required: true
+ *         type: object
+ *         minimum: 1
+ *         example: 
+ *           record: "160 ropes"
+ *           memberId: "11817fb1-03a1-4b4a-8d27-854ac893cf41"
+ *           workoutId: "4a3d9aaa-608c-49a7-a004-66305ad4ab50"
+ *           
+ *     responses:
+ *       200:
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: OK
+ *                 data:
+ *                   type: array 
+ *                   items: 
+ *                     $ref: "#/components/schemas/Record"
+ *       5XX:
+ *         description: FAILED
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status: 
+ *                   type: string
+ *                   example: FAILED
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     error:
+ *                       type: string 
+ *                       example: "Some error message"
+ */
+router.post("/records", recordController.createNewRecord);
 
 module.exports = router;

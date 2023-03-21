@@ -8,4 +8,21 @@ const getRecordForWorkout = (workoutId) => {
     throw error;
   }
 };
-module.exports = { getRecordForWorkout };
+const createNewRecord = (newRecord) => {
+  const recordToInsert = {
+    ...newRecord,
+    id: uuid(),
+  };
+
+  try {
+    const record = Record.createNewRecord(recordToInsert);
+    return record;
+  } catch (error) {
+    throw error;
+  }
+};
+
+module.exports = {
+  getRecordForWorkout,
+  createNewRecord
+};
