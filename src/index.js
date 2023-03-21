@@ -9,6 +9,8 @@ const app = express();
 const PORT = process.env.PORT || 3000; 
 
 app.use(bodyParser.json());
+// app.use(cache("2 minutes"));
+
 
 // For testing purposes 
 app.get("/", (req, res) => { 
