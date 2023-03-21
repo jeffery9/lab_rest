@@ -261,6 +261,7 @@ router.delete("/:workoutId", workoutController.deleteOneWorkout);
  *   get:
  *     tags:
  *       - Workouts
+ *       - Records
  *     parameters:
  *       - in: path
  *         name: workoutId
@@ -308,7 +309,7 @@ router.get("/:workoutId/records", recordController.getRecordForWorkout);
  * /api/v1/workouts/records:
  *   get:
  *     tags:
- *       - Workouts
+ *       - Records
  *     parameters:
  *       - in: query
  *         name: mode
@@ -353,8 +354,7 @@ router.get("/records", recordController.createNewRecord);
  * /api/v1/workouts/records/{recordId}:
  *   get:
  *     tags:
- *       - Workouts
- *    
+ *       - Records
  *           
  *     responses:
  *       200:
@@ -395,7 +395,8 @@ router.get("/records/:recordId", recordController.createNewRecord);
  * /api/v1/workouts/records:
  *   post:
  *     tags:
- *       - Workouts
+ *       - Records
+ * 
  *     requestBody:
  *       content:
  *         application/json:
