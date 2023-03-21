@@ -111,12 +111,24 @@ router.get("/:workoutId", workoutController.getOneWorkout);
  *   post:
  *     tags:
  *       - Workouts
- *     parameters:
- *       - in: body
- *         name: workout
- *         required: true
- *         type: object
- *         minimum: 1
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             properties:
+ *               name: 
+ *                 type: string
+ *               mode: 
+ *                 type: string
+ *               equipment: 
+ *                 type: array
+ *                 items: 
+ *                   type: string
+ *               exercises: 
+ *                 type: array
+ *                 items: 
+ *                   type: string
+ *              
  *     responses:
  *       200:
  *         description: OK
@@ -384,16 +396,17 @@ router.get("/records/:recordId", recordController.createNewRecord);
  *   post:
  *     tags:
  *       - Workouts
- *     parameters:
- *       - in: body
- *         name: record
- *         required: true
- *         type: object
- *         minimum: 1
- *         example: 
- *           record: "160 ropes"
- *           memberId: "11817fb1-03a1-4b4a-8d27-854ac893cf41"
- *           workoutId: "4a3d9aaa-608c-49a7-a004-66305ad4ab50"
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             properties:
+ *               record: 
+ *                 type: string
+ *               wrokoutId: 
+ *                 type: string
+ *               memberId: 
+ *                 type: string
  *           
  *     responses:
  *       200:
