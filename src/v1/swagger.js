@@ -9,6 +9,7 @@ const options = {
   },
   apis: [
     "./src/v1/routes/workoutRoutes.js",
+    "./src/v1/routes/recordRoutes.js",
     "./src/database/Workout.js",
     "./src/database/Record.js",
     "./src/database/Member.js",

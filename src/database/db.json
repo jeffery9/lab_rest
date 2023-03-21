@@ -200,6 +200,18 @@
       "id": "62251cfe-fdb6-4fa6-9a2d-c21be93ac78d",
       "workout": "4a3d9aaa-608c-49a7-a004-66305ad4ab50",
       "record": "145 reps"
+    },
+    {
+      "workoutId": "4a3d9aaa-608c-49a7-a004-66305ad4ab50",
+      "memberId": "11817fb1-03a1-4b4a-8d27-854ac893cf41",
+      "record": "160 ropes",
+      "id": "b5430877-8910-4590-a885-68b825d20277"
+    },
+    {
+      "workoutId": "4a3d9aaa-608c-49a7-a004-66305ad4ab50",
+      "memberId": "11817fb1-03a1-4b4a-8d27-854ac893cf41",
+      "record": "160 ropes",
+      "id": "281ccf17-d728-4d1d-b8cc-ac0fd14310fb"
     }
   ]
 }

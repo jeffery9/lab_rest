@@ -11,6 +11,22 @@ const getRecordForWorkout = (workoutId) => {
     throw error;
   }
 };
+const getAllRecord = (recordId = null) => {
+  try {
+    const record = Record.getAllRecord();
+    return record;
+  } catch (error) {
+    throw error;
+  }
+};
+const getOneRecord = (recordId) => {
+  try {
+    const record = Record.getOneRecord(recordId);
+    return record;
+  } catch (error) {
+    throw error;
+  }
+};
 const createNewRecord = (newRecord) => {
   const recordToInsert = {
     ...newRecord,
@@ -27,5 +43,7 @@ const createNewRecord = (newRecord) => {
 
 module.exports = {
   getRecordForWorkout,
+  getAllRecord,
+  getOneRecord,
   createNewRecord
 };

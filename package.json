@@ -83,7 +83,7 @@
     "statuses": "^2.0.1",
     "supports-color": "^5.5.0",
     "swagger-jsdoc": "^6.0.0",
-    "swagger-ui-express": "^4.1.6",
+    "swagger-ui-express": "^4.6.2",
     "to-regex-range": "^5.0.1",
     "toidentifier": "^1.0.1",
     "touch": "^3.1.0",

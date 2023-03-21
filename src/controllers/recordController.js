@@ -13,10 +13,25 @@ const getRecordForWorkout = (req, res) => {
     res.send({ status: "OK", data: allRecordForWorkout });
 };
 
+const getAllRecords = (req, res) => {
+    console.log('++++++++++');
+    console.log(req);
+
+    const allRecord = recordService.getAllRecord();
+    res.send({ status: "OK", data: allRecord });
+};
+
+const getOneRecord = (req, res) => {
+    const {
+        params: { recordId },
+    } = req;
+
+    const record = recordService.getOneRecord(recordId);
+    res.send({ status: "OK", data: record });
+};
+
 const createNewRecord = (req, res) => {
     const { body } = req;
-    console.log(req);
-    console.log(body);
     if (
         !body.workoutId ||
         !body.memberId ||
@@ -52,4 +67,6 @@ const createNewRecord = (req, res) => {
 module.exports = {
     getRecordForWorkout,
     createNewRecord,
+    getAllRecords,
+    getOneRecord
 };

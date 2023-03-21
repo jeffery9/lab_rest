@@ -56,7 +56,8 @@ const cache = apicache.middleware;
  *                       type: string 
  *                       example: "Some error message"
  */
-router.get("/", cache("2 minutes"), workoutController.getAllWorkouts);
+// router.get("/", cache("2 minutes"), workoutController.getAllWorkouts);
+router.get("/", workoutController.getAllWorkouts);
 
 /**
  * @openapi
@@ -69,8 +70,6 @@ router.get("/", cache("2 minutes"), workoutController.getAllWorkouts);
  *         name: workoutId
  *         required: true
  *         type: string
- *         minimum: 1
- *         description: Parameter description in Markdown.
  *     responses:
  *       200:
  *         description: OK
@@ -304,143 +303,5 @@ router.delete("/:workoutId", workoutController.deleteOneWorkout);
 router.get("/:workoutId/records", recordController.getRecordForWorkout);
 
 
-/**
- * @openapi
- * /api/v1/workouts/records:
- *   get:
- *     tags:
- *       - Records
- *     parameters:
- *       - in: query
- *         name: mode
- *         
- *           
- *     responses:
- *       200:
- *         description: OK
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 status:
- *                   type: string
- *                   example: OK
- *                 data:
- *                   type: array 
- *                   items: 
- *                     $ref: "#/components/schemas/Record"
- *       5XX:
- *         description: FAILED
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 status: 
- *                   type: string
- *                   example: FAILED
- *                 data:
- *                   type: object
- *                   properties:
- *                     error:
- *                       type: string 
- *                       example: "Some error message"
- */
-router.get("/records", recordController.createNewRecord);
-
-/**
- * @openapi
- * /api/v1/workouts/records/{recordId}:
- *   get:
- *     tags:
- *       - Records
- *           
- *     responses:
- *       200:
- *         description: OK
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 status:
- *                   type: string
- *                   example: OK
- *                 data:
- *                   type: array 
- *                   items: 
- *                     $ref: "#/components/schemas/Record"
- *       5XX:
- *         description: FAILED
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 status: 
- *                   type: string
- *                   example: FAILED
- *                 data:
- *                   type: object
- *                   properties:
- *                     error:
- *                       type: string 
- *                       example: "Some error message"
- */
-router.get("/records/:recordId", recordController.createNewRecord);
-
-/**
- * @openapi
- * /api/v1/workouts/records:
- *   post:
- *     tags:
- *       - Records
- * 
- *     requestBody:
- *       content:
- *         application/json:
- *           schema:
- *             properties:
- *               record: 
- *                 type: string
- *               wrokoutId: 
- *                 type: string
- *               memberId: 
- *                 type: string
- *           
- *     responses:
- *       200:
- *         description: OK
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 status:
- *                   type: string
- *                   example: OK
- *                 data:
- *                   type: array 
- *                   items: 
- *                     $ref: "#/components/schemas/Record"
- *       5XX:
- *         description: FAILED
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 status: 
- *                   type: string
- *                   example: FAILED
- *                 data:
- *                   type: object
- *                   properties:
- *                     error:
- *                       type: string 
- *                       example: "Some error message"
- */
-router.post("/records", recordController.createNewRecord);
 
 module.exports = router;

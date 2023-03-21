@@ -43,6 +43,33 @@ const getRecordForWorkout = (workoutId) => {
   }
 };
 
+const getAllRecord = () => {
+  console.log(" +++++ in data access layer");
+  try {
+    const record = DB.records;
+
+    return record;
+  } catch (error) {
+    throw { status: error?.status || 500, message: error?.message || error };
+  }
+};
+
+const getOneRecord = (recordId) => {
+  console.log(recordId);
+  try {
+    const record = DB.records.filter((record) => record.id === recordId);
+    if (!record) {
+      throw {
+        status: 400,
+        message: `Can't find workout with the id '${workoutId}'`,
+      };
+    }
+    return record;
+  } catch (error) {
+    throw { status: error?.status || 500, message: error?.message || error };
+  }
+};
+
 const createNewRecord = (newRecord) => {
   try {
     DB.records.push(newRecord);
@@ -55,5 +82,7 @@ const createNewRecord = (newRecord) => {
 
 module.exports = {
   getRecordForWorkout,
-  createNewRecord
+  getOneRecord,
+  getAllRecord,
+  createNewRecord,
 };
