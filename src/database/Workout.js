@@ -41,13 +41,13 @@ const { saveToDatabase } = require("./utils");
  */
 const getAllWorkouts = (filterParams) => {
   let workouts = DB.workouts;
-    if (filterParams.mode) {
-      return DB.workouts.filter((workout) =>
-        workout.mode.toLowerCase().includes(filterParams.mode)
-      );
-    }
-    // Other if-statements will go here for different parameters
-    return workouts;
+  if (filterParams.mode) {
+    return DB.workouts.filter((workout) =>
+      workout.mode.toLowerCase().includes(filterParams.mode)
+    );
+  }
+  // Other if-statements will go here for different parameters
+  return workouts;
 };
 
 const getOneWorkout = (workoutId) => {
@@ -68,9 +68,9 @@ const createNewWorkout = (newWorkout) => {
     };;
   }
   try {
-  DB.workouts.push(newWorkout);
-  saveToDatabase(DB);
-  return newWorkout;
+    DB.workouts.push(newWorkout);
+    saveToDatabase(DB);
+    return newWorkout;
   } catch (error) {
     throw { status: 500, message: error?.message || error };
   }
