@@ -1,3 +1,6 @@
+const { v4: uuid } = require("uuid");
+
+
 const Record = require("../database/Record");
 
 const getRecordForWorkout = (workoutId) => {

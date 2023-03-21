@@ -338,7 +338,7 @@ router.get("/records", recordController.createNewRecord);
 
 /**
  * @openapi
- * /api/v1/workouts/records/{recordID}:
+ * /api/v1/workouts/records/{recordId}:
  *   get:
  *     tags:
  *       - Workouts

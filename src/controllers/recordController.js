@@ -34,7 +34,8 @@ const createNewRecord = (req, res) => {
     }
 
     const newRecordcreateNewRecord = {
-        workout: body.workout,
+        workoutId: body.workoutId,
+        memberId: body.memberId,
         record: body.record,
     };
     try {
