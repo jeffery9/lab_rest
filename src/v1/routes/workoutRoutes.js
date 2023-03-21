@@ -1,6 +1,8 @@
 const express = require("express");
 const apicache = require("apicache");
-
+// todo add Security
+// const authenticate = require("../../middlewares/authenticate");
+// const authorize = require("../../middlewares/authorize");
 
 const workoutController = require("../../controllers/workoutController");
 const recordController = require("../../controllers/recordController");
@@ -17,6 +19,8 @@ router.get("/:workoutId", workoutController.getOneWorkout);
 
 router.get("/:workoutId/records", recordController.getRecordForWorkout);
 
+// todo add Security
+// router.post("/", authenticate, authorize, workoutController.createNewWorkout);
 
 router.post("/", workoutController.createNewWorkout);
 
